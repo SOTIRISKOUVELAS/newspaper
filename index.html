@@ -3,56 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accessible PDF Viewer</title>
-    <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+    <title>PDF Viewer with Accessibility</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
             margin: 0;
-            padding: 20px;
-            text-align: center;
-            background-color: #f4f4f4;
+            padding: 0;
+            overflow: hidden;
         }
-        #pdf-viewer {
-            width: 80%;
-            height: 90vh;
-            margin: auto;
+        iframe {
+            width: 100vw;
+            height: 100vh;
+            border: none;
         }
     </style>
 </head>
 <body>
 
-    <h1>PDF Viewer with Accessibility Features</h1>
-    <canvas id="pdf-viewer"></canvas>
+    <!-- PDF Viewer -->
+    <iframe src="εφημεριδα copy (1).pdf"></iframe>
 
     <!-- UserWay Accessibility Widget -->
     <script src="https://cdn.userway.org/widget.js" data-account="Jo6dwwOGjJ"></script>
-
-    <script>
-        var url = 'εφημεριδα copy (1).pdf'; // Update this with your PDF URL
-
-        var pdfjsLib = window['pdfjs-dist/build/pdf'];
-
-        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://mozilla.github.io/pdf.js/build/pdf.worker.js';
-
-        pdfjsLib.getDocument(url).promise.then(function(pdf) {
-            pdf.getPage(1).then(function(page) {
-                var scale = 1.5;
-                var viewport = page.getViewport({ scale: scale });
-
-                var canvas = document.getElementById('pdf-viewer');
-                var context = canvas.getContext('2d');
-                canvas.height = viewport.height;
-                canvas.width = viewport.width;
-
-                var renderContext = {
-                    canvasContext: context,
-                    viewport: viewport
-                };
-                page.render(renderContext);
-            });
-        });
-    </script>
 
 </body>
 </html>
